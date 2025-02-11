@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青林口高抬戏专著</title>
+    <style>
+        /*   */
+        .nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .nav li {
+            float: left;
+        }
+
+        .nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="navbar" class="nav"></ul>
+
+    <script>
+        const nav = [{ "index": 1, "name": "穆柯寨" },
+        { "index": 2, "name": "送京娘" },
+        { "index": 3, "name": "李白醉写" }];
+
+        // 获取导航栏的ul元素
+        const navbar = document.getElementById('navbar');
+
+        // 遍历nav数组并创建li元素
+        nav.forEach(item => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `${item.index}.html`; // 设置链接地址
+            a.textContent = item.name; // 设置链接文本
+            li.appendChild(a);
+            navbar.appendChild(li);
+        });
+    </script>
+</body>
+
+</html>
