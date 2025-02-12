@@ -8,7 +8,7 @@
     <style>
         .nav {
             list-style-type: none;
-            margin: 0;
+            margin: 10px 0 10px 0;
             padding: 0;
             display: flex;
             overflow-x: auto;
@@ -54,9 +54,9 @@
 </head>
 
 <body>
-    <h1 style="margin: 15px 0;">青林口高抬戏专著数字平台</h1>
+    <h2 style="margin: 15px 0;">青林口高抬戏专著数字平台</h2>
     <input type="text" id="searchInput" placeholder="搜索...">
-
+    <!-- <hr> -->
     <ul id="navbar" class="nav"></ul>
 
     <script>
@@ -89,7 +89,7 @@
         nav.forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = `/${item.index}.html`; // 设置链接地址
+            a.href = `./${item.index}.html`; // 设置链接地址
             a.textContent = item.name; // 设置链接文本
             li.appendChild(a);
             navbar.appendChild(li);
