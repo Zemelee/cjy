@@ -65,7 +65,7 @@
         nav.forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = `/dramas/${item.index}.html`; // 设置链接地址
+            a.href = `/${item.index}.html`; // 设置链接地址
             a.textContent = item.name; // 设置链接文本
             li.appendChild(a);
             navbar.appendChild(li);
