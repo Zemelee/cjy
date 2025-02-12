@@ -49,6 +49,13 @@
             { "index": 8, "name": "太白邀月" },
             { "index": 10, "name": "白蛇传" },
             { "index": 11, "name": "桂英打雁" },
+            { "index": 12, "name": "别窑（从军）" },
+            { "index": 13, "name": "长生殿" },
+            { "index": 14, "name": "思凡" },
+            { "index": 15, "name": "刘海砍樵" },
+            { "index": 16, "name": "走单骑" },
+            { "index": 17, "name": "秋江" },
+            { "index": 18, "name": "神探" },
         ];
 
         // 获取导航栏的ul元素
@@ -58,7 +65,7 @@
         nav.forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = `${item.index}.html`; // 设置链接地址
+            a.href = `/dramas/${item.index}.html`; // 设置链接地址
             a.textContent = item.name; // 设置链接文本
             li.appendChild(a);
             navbar.appendChild(li);
