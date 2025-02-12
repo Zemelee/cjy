@@ -45,81 +45,122 @@
             outline: none;
         }
 
-
         #searchInput {
-            padding-left: 35px;
-            /* 为图标留出空间 */
+            padding-left: 15px;
+        }
+
+        #dramas {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            /* 允许子元素换行 */
+        }
+
+        .drama-item-link :hover {
+            background-color: #f1f1f1;
+        }
+
+        .drama-item {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 小于600px */
+        @media screen and (max-width: 600px) {
+            .drama-img {
+                width: 30%;
+                height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .drama-img {
+                width: 100%;
+                height: 125px;
+            }
         }
     </style>
 </head>
 
 <body>
     <h2 style="margin: 15px 0;">青林口高抬戏专著数字平台</h2>
-    <input type="text" id="searchInput" placeholder="搜索...">
+    <input type="text" id="searchInput" placeholder="搜索..." />
     <!-- <hr> -->
-    <ul id="navbar" class="nav"></ul>
 
-    <script>
 
-        const nav = [
-            { "index": 1, "name": "穆柯寨" },
-            { "index": 2, "name": "送京娘" },
-            { "index": 3, "name": "李白醉写" },
-            { "index": 4, "name": "桃园花仙" },
-            { "index": 5, "name": "红军长征" },
-            { "index": 6, "name": "踏伞" },
-            { "index": 7, "name": "凤仪亭" },
-            { "index": 8, "name": "霸王别姬" },
-            { "index": 8, "name": "太白邀月" },
-            { "index": 10, "name": "白蛇传" },
-            { "index": 11, "name": "桂英打雁" },
-            { "index": 12, "name": "别窑（从军）" },
-            { "index": 13, "name": "长生殿" },
-            { "index": 14, "name": "思凡" },
-            { "index": 15, "name": "刘海砍樵" },
-            { "index": 16, "name": "走单骑" },
-            { "index": 17, "name": "秋江" },
-            { "index": 18, "name": "神探" },
-        ];
 
-        // 获取导航栏的ul元素
-        const navbar = document.getElementById('navbar');
+    <div id="dramas">
+    </div>
+</body>
+<script>
 
-        // 遍历nav数组并创建li元素
-        nav.forEach(item => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = `./${item.index}.html`; // 设置链接地址
-            a.textContent = item.name; // 设置链接文本
-            li.appendChild(a);
-            navbar.appendChild(li);
+    const nav = [
+        { "index": 1, "name": "穆柯寨" },
+        { "index": 2, "name": "送京娘" },
+        { "index": 3, "name": "李白醉写" },
+        { "index": 4, "name": "桃园花仙" },
+        { "index": 5, "name": "红军长征" },
+        { "index": 6, "name": "踏伞" },
+        { "index": 7, "name": "凤仪亭" },
+        { "index": 8, "name": "霸王别姬" },
+        { "index": 8, "name": "太白邀月" },
+        { "index": 10, "name": "白蛇传" },
+        { "index": 11, "name": "桂英打雁" },
+        { "index": 12, "name": "别窑（从军）" },
+        { "index": 13, "name": "长生殿" },
+        { "index": 14, "name": "思凡" },
+        { "index": 15, "name": "刘海砍樵" },
+        { "index": 16, "name": "走单骑" },
+        { "index": 17, "name": "秋江" },
+        { "index": 18, "name": "神探" },
+    ];
+
+    const navbar = document.getElementById('dramas');
+    nav.forEach(item => {
+        let a = document.createElement('a');
+        a.href = `./${item.index}.html`;
+        a.className = 'drama-item-link';
+        a.style.textDecoration = 'none';
+        let div_outer = document.createElement('div');
+        div_outer.className = 'drama-item';
+        let img = document.createElement('img');
+        img.src = `./img/${item.index}/1.png`;
+        img.className = 'drama-img';
+        div_outer.appendChild(img);
+        let div_inner = document.createElement('div');
+        div_inner.className = 'drama-item-info';
+        div_inner.innerText = item.name;
+        div_outer.appendChild(div_inner);
+        a.appendChild(div_outer);
+        navbar.appendChild(a);
+    })
+
+    // 防抖函数
+    function debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+    const searchInput = document.getElementById('searchInput');
+    function search() {
+        const filter = searchInput.value.toLowerCase();
+        const items = navbar.querySelectorAll('a');
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(filter)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
         });
-        // 防抖函数
-        function debounce(func, wait) {
-            let timeout;
-            return function (...args) {
-                const context = this;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(context, args), wait);
-            };
-        }
-        const searchInput = document.getElementById('searchInput');
-        function search() {
-            const filter = searchInput.value.toLowerCase();
-            const items = navbar.querySelectorAll('li');
-            items.forEach(item => {
-                const text = item.querySelector('a').textContent.toLowerCase();
-                if (text.includes(filter)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-        searchInput.addEventListener('input', debounce(search, 600));
+    }
+    searchInput.addEventListener('input', debounce(search, 600));
 
 
-    </script>
+</script>
 </body>
 
 </html>
