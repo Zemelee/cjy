@@ -8,18 +8,18 @@
     <style>
         .link-container {
             text-align: center;
-            /* margin: 10px; */
             display: flex;
         }
 
         .styled-link {
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: color 0.3s ease;
+            color: #333;
         }
 
         .styled-link:hover {
-            background-color: #0056b3;
+            color: #ff4d4d;
         }
 
         .nav {
@@ -155,7 +155,7 @@
     nav.forEach(item => {
         let a = document.createElement('a');
         a.href = `./${item.index}.html`;
-        a.className = 'drama-item-link';
+        a.className = 'styled-link drama-item-link';
         a.style.textDecoration = 'none';
         let div_outer = document.createElement('div');
         div_outer.className = 'drama-item';
