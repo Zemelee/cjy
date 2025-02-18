@@ -92,6 +92,18 @@
             object-fit: cover;
             border-radius: 5px;
         }
+
+        @media screen and (max-width: 360px) {
+            .drama-item-info {
+                font-size: small;
+            }
+        }
+
+        @media screen and (min-width: 360px) {
+            .drama-item-info {
+                font-size: medium;
+            }
+        }
     </style>
 </head>
 
@@ -106,28 +118,30 @@
         <input type="text" id="searchInput" placeholder="搜索剧目名称..." />
     </div>
     <hr>
-    <div class="link-container">
-        <div style="margin: 0 auto; text-align: center;">
-            <a href="./0.html" target="_blank" class="styled-link">
-                <img src="./cover/jianjie.jpg" width="100vw" height="auto" alt="青林口高抬戏简介"
-                    style="display: block; margin-top: 10px;">
-                高抬戏简介
-            </a>
-        </div>
-        <div style="margin: 0 auto; text-align: center;">
-            <a href="./origin/origin.html" target="_blank" class="styled-link">
-
-                <img src="./cover/suyuan.png" width="100vw" height="auto" alt="青林口高抬戏溯源"
-                    style="display: block; margin-top: 10px;">
-                高抬戏溯源
-            </a>
-        </div>
+    <h2
+        style="margin:0 0 5px 0;font-family: 'SimSun', serif;  color: #333; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+        青林口高抬戏简介</h2>
+    <div style="font-size: xx-small;font-family: 'SimSun', serif;">点击封面可查看详情</div>
+    <div style="margin: 0 auto; text-align: center;">
+        <a href="./0.html" target="_blank" class="styled-link">
+            <img src="./cover/jianjie.jpg" width="50%" height="50%" alt="青林口高抬戏简介"
+                style="margin-top: 10px; max-width: 300px; border-radius: 5px;">
+            <div class="drama-item-info">青林口高抬戏</div>
+        </a>
     </div>
-
+    <hr>
+    <h2 style="margin:0 0 0 0;font-family: 'SimSun', serif;  color: #333; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+        青林口高抬戏溯源</h2>
+    <div style="margin: 0 auto; text-align: center;">
+        <a href="./origin/origin.html" target="_blank" class="styled-link">
+            <img src="./cover/suyuan.png" width="50%" height="50%" alt="青林口高抬戏溯源"
+                style="margin-top: 10px;max-width: 300px;border-radius: 5px;">
+            <div class="drama-item-info">东汉·仙界宴乐百戏像图</div>
+        </a>
+    </div>
     <hr>
     <h2 style="font-family: 'SimSun', serif;  color: #333; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
         青林口高抬戏剧目</h2>
-    <div style="font-size: xx-small;font-family: 'SimSun', serif;margin-top: -15px;">点击封面可查看详情</div>
     <div id="dramas">
     </div>
 </body>
