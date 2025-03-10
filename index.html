@@ -148,6 +148,7 @@
     </h2>
     <div id="dramas">
     </div>
+    <div id="visitor">您是第4786位访客</div>
 </body>
 <script>
 
@@ -217,6 +218,16 @@
     }
     searchInput.addEventListener('input', debounce(search, 600));
 
+    const visitDOM = document.querySelector("#visitor")
+    fetch("http://sugarblack.top:3000/visit")
+        .then(response => response.json())
+        .then(data => {
+            // console.log(`您是第${visitCount}位访客`)
+            visitDOM.innerHTML = `您是第${data.visitorCount}位访客`
+        })
+        .catch(error => {
+            console.error("Error fetching visit count:", error);
+        });
 
 </script>
 </body>
